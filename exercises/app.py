@@ -2,12 +2,16 @@ from databases import *
 from flask import Flask, render_template, url_for
 app = Flask(__name__)
 
-@app.route('/')
-def home():
+@app.route('/<int:id>')
+def home (id):
 	return render_template(
-		"home.html")
+		"home.html" , 
+		id = id )
+
 @app.route('/student/<int:id>')
-def nevigate (id):
+def route(id):
 	return render_template(
-		"home.html" , id = id )
+		'student.html',
+		 student_id=id)
 app.run(debug=True)
+
